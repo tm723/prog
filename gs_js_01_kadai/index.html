@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+ 
+    <link rel="stylesheet" href="css/style.css">
+    <title>じゃんけんアプリ</title>
+</head>
+
+<body>
+
+    <header>
+        <h1>じゃんけんゲーム</h1>
+        <img class="title_img" src="img/jankentitle.png">
+    </header>
+
+    <div>
+        <h3>選んでね</h3>
+        <ul>
+            <li id="gu_btn"><img class="hand_img" src="img/gu.png"></li>
+            <li id="choki_btn"><img class="hand_img" src="img/choki.jpeg"></li>
+            <li id="pa_btn"><img class="hand_img" src="img/pa.jpeg" ></li>
+        </ul>
+    </div>
+
+    <div class=hands>  
+        <div class=hand> 
+            <p>自分</p>
+            <p id="myhand">?</p>
+        </div>
+        <div class=hand> 
+            <p>相手</p>
+            <p id="yourhand">?</p>
+        </div>
+    </div>
+
+    <p class="result">結果：<span id="judgment"></p>
+
+    <footer>ジャンケン協会提供</footer>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        
+        let myview
+        let yourview
+        let result
+        // 0=グー 1=チョキ 2=パー
+ 
+        $("#gu_btn").on("click",function(){
+        const myhand = 0
+        const yourhand = Math.floor(Math.random()*3);
+ 
+        if(yourhand ===0 ){
+            myview = '<img src="img/gu.png" width="200">';
+            yourview = '<img src="img/gu.png" width="200">';
+            result = 'ドロー';
+        }
+        if(yourhand ===1 ){
+            myview = '<img src="img/gu.png" width="200">';
+            yourview = '<img src="img/choki.jpeg" width="200">';
+            result = 'WIN!!';
+        }
+        if(yourhand ===2 ){
+            myview = '<img src="img/gu.png" width="200">';
+            yourview = '<img src="img/pa.jpeg" width="200">';
+            result = 'LOSE...';
+        }
+
+        $("#myhand").html(myview);
+        $("#yourhand").html(yourview);
+        $("#judgment").html(result);
+        
+        });
+
+        $("#choki_btn").on("click",function(){
+        const myhand = 1
+        const yourhand = Math.floor(Math.random()*3);
+
+        if(yourhand ===1 ){
+            myview = '<img src="img/choki.jpeg" width="200">';
+            yourview = '<img src="img/choki.jpeg" width="200">';
+            result = 'ドロー';
+        }
+
+        if(yourhand ===2 ){
+            myview = '<img src="img/choki.jpeg" width="200">';
+            yourview = '<img src="img/pa.jpeg" width="200">';
+            result = 'WIN!!';
+        }
+
+        if(yourhand ===0 ){
+            myview = '<img src="img/choki.jpeg" width="200">';
+            yourview = '<img src="img/gu.png" width="200">';
+            result = 'LOSE...';
+        }
+
+        $("#myhand").html(myview);
+        $("#yourhand").html(yourview);
+        $("#judgment").html(result);
+        
+        });
+
+        $("#pa_btn").on("click",function(){
+        const myhand = 2
+        const yourhand = Math.floor(Math.random()*3);
+
+        if(yourhand ===2 ){
+            myview = '<img src="img/pa.jpeg" width="200">';
+            yourview = '<img src="img/pa.jpeg" width="200">';
+            result = 'ドロー';
+        }
+
+        if(yourhand ===0 ){
+            myview = '<img src="img/pa.jpeg" width="200">';
+            yourview = '<img src="img/gu.png" width="200">';
+            result = 'WIN!!';
+        }
+
+        if(yourhand ===1 ){
+            myview = '<img src="img/pa.jpeg" width="200">';
+            yourview = '<img src="img/choki.jpeg" width="200">';
+            result = 'LOSE...';
+        }
+
+        $("#myhand").html(myview);
+        $("#yourhand").html(yourview);
+        $("#judgment").html(result);
+            
+        });
+    </script>
+</body>
+
+</html>
